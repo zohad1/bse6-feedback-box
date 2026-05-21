@@ -22,18 +22,16 @@ export default function App() {
     return () => subscription.unsubscribe()
   }, [])
 
-  if (loading) return <div className='loading'>Loading...</div>
+  if (loading) return <div className='loading'>Loading…</div>
 
   return (
-    <>
+    <div className='stage'>
       {session ? (
         <AdminDashboard session={session} />
       ) : (
-        <>
-          <FeedbackForm />
-          {showLogin && <AdminLogin onClose={() => setShowLogin(false)} />}
-        </>
+        <FeedbackForm />
       )}
-    </>
+      {showLogin && !session && <AdminLogin onClose={() => setShowLogin(false)} />}
+    </div>
   )
 }
