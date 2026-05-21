@@ -1,16 +1,84 @@
-# React + Vite
+# Anonymous Feedback Box
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live URL:** https://bse6-feedback-box-alpha.vercel.app  
+**GitHub:** https://github.com/zohad1/bse6-feedback-box
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## About
 
-## React Compiler
+A full-stack anonymous feedback application built for Cloud Computing Lab 10B at Bahria University. Anyone can submit feedback without creating an account. An admin can sign in to view, manage, and delete submissions in real time.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React + Vite
+- **Backend/Auth:** Supabase (BaaS)
+- **Database:** Supabase PostgreSQL (DaaS)
+- **Deployment:** Vercel
+- **Realtime:** Supabase WebSocket channels
+
+---
+
+## Features
+
+- Anonymous feedback submission - no account required
+- Category selection - General, Bug Report, Feature Request, Complaint, Suggestion
+- Admin-only dashboard protected by Supabase Auth
+- Real-time updates - new feedback appears instantly without refresh
+- Mark feedback as reviewed or pending
+- Delete feedback with database-level RLS enforcement
+- Filter by category and status
+
+---
+
+## Architecture
+
+| Layer | Platform |
+|-------|----------|
+| Frontend | Vercel - global CDN |
+| Auth + API | Supabase BaaS |
+| Database | Supabase PostgreSQL (DaaS) |
+
+---
+
+## RLS Policy Design
+
+This app has an unusual access pattern:
+
+- **INSERT** - open to everyone including unauthenticated users
+- **SELECT** - restricted to authenticated admin only
+- **UPDATE** - restricted to authenticated admin only
+- **DELETE** - restricted to authenticated admin only
+
+---
+
+## Local Setup
+
+```bash
+git clone https://github.com/zohad1/bse6-feedback-box.git
+cd bse6-feedback-box
+npm install
+```
+
+Create `.env.local`:
+
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+```
+
+```bash
+npm run dev
+```
+
+---
+
+## Student Info
+
+- **Name:** Zohad
+- **Roll Number:** 01-131232-098
+- **Class:** BSE-6 Section B
+- **Lab:** Lab 10 - Cloud Computing
+- **Instructor:** Engr. Salman Zafar
