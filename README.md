@@ -75,10 +75,3 @@ npm run dev
 
 ---
 
-## Student Info
-
-- **Name:** Zohad
-- **Roll Number:** 01-131232-098
-- **Class:** BSE-6 Section B
-- **Lab:** Lab 10 - Cloud Computing
-- **Instructor:** Engr. Salman Zafar
